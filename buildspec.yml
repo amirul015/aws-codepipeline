@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Node.js"
+      - aws --version
+      - n 18
+      - npm -v
+      - npm install -g aws-cdk
+      - source .venv/bin/activate
+      - cdk --version
+      - pip install -r requirements.txt
+      - cdk synth
+      - cdk bootstrap aws://079774713790/us-east-1 --force
+      - cdk deploy
+  build:
+    commands:
+      - echo "Build commands go here"
+
+artifacts:
+  files:
+  - '**/*'
+  name: Output_file1
